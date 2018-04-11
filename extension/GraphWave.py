@@ -206,7 +206,7 @@ class GraphWave:
 
         matchingPoints = 0
 
-        self.debug("------------------- Getting matching count -------------------")
+        self.debug("------------------- Getting matching points -------------------")
 
         for property in properties:
             if property not in self.edges_properties:
@@ -231,7 +231,7 @@ class GraphWave:
             self.debug("Matching points += {}, based on {}".format(stylometry_value / stylometry_count, "stylometry"))
             matchingPoints += stylometry_value / stylometry_count
 
-        self.debug("Final matching points = {}".format(count))
-        self.debug("------------------- Finished matching count -------------------\n\n")
+        self.debug("Final matching points = {}".format(matchingPoints))
+        self.debug("------------------- Finished matching points -------------------\n\n")
 
         return matchingPoints
