@@ -5,7 +5,7 @@
     <br/>
     <b>Detecting similar CFG-paths from HTTP responses in a black box manner</b>
     <br/>
-    This Burp Suite extension detects similar code flows (CFG-paths) in requests and keeps track of them. The extension enables you to ignore the similar requests in active scans.
+    <sub>This Burp Suite extension detects similar code flows (CFG-paths) in requests and keeps track of them. The extension enables you to ignore the similar requests in active scans.</sub>
     <br/>
     <sub>Written with ❤︎ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
     <br/>
