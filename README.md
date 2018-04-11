@@ -1,15 +1,13 @@
 <h1 align="center">GraphWave</h1>
 <p align="center">
     <a href="https://github.com/tijme/graphwave/blob/master/LICENSE.md"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=MIT" /></a>
-    <a href="https://github.com/tijme/graphwave/releases"><img src="https://raw.finnwea.com/shield/?typeKey=SemverVersion&typeValue1=graphwave&typeValue2=master&typeValue4=Stable&cache=1"></a>
+    <a href="https://github.com/tijme/graphwave/releases"><img src="https://raw.finnwea.com/shield/?typeKey=SemverVersion&typeValue1=graphwave&typeValue2=master&typeValue4=Stable&cache=2"></a>
     <br/>
     <b>Detecting similar CFG-paths from HTTP responses in a black box manner</b>
     <br/>
     <sub>This Burp Suite extension detects similar code flows (CFG-paths) in requests and enables you to ignore them in active scans.</sub>
     <br/>
     <sub>Written with ❤︎ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
-    <br/>
-    <br/>
 </p>
 
 <img src="https://github.com/tijme/graphwave/raw/master/.github/preview.png" />
