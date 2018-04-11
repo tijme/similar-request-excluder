@@ -1,7 +1,7 @@
 <h1 align="center">GraphWave</h1>
 <p align="center">
     <a href="https://github.com/tijme/graphwave/blob/master/LICENSE.md"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=MIT" /></a>
-    <a href="https://github.com/tijme/graphwave/releases"><img src="https://raw.finnwea.com/shield/?typeKey=SemverVersion&typeValue1=graphwave&typeValue2=master&typeValue4=Stable&cache=2"></a>
+    <a href="https://github.com/tijme/graphwave/releases"><img src="https://raw.finnwea.com/shield/?typeKey=SemverVersion&typeValue1=graphwave&typeValue2=master&typeValue4=Stable&cache=3"></a>
     <br/>
     <b>Detecting similar CFG-paths from HTTP responses in a black box manner</b>
     <br/>
