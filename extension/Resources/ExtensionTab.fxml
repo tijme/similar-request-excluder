@@ -139,7 +139,7 @@
                                                 <Font name="Verdana" size="12.0" />
                                             </font>
                                         </Label>
-                                        <Slider fx:id="metSlider" blockIncrement="1" majorTickUnit="1" min="2" max="100" minorTickCount="0" snapToTicks="true" GridPane.rowIndex="4" />
+                                        <Slider fx:id="metSlider" blockIncrement="1" majorTickUnit="1" min="2" max="250" minorTickCount="0" snapToTicks="true" GridPane.rowIndex="4" />
 
                                         <!-- Matching count threshold -->
                                         <Label fx:id="mctLabel" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" wrapText="true" GridPane.rowIndex="5" text="Matching points threshold">
