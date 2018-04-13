@@ -7,7 +7,7 @@
     <br/>
     <sub>This Burp Suite extension detects similar code flows (CFG-paths) in requests and enables you to ignore them in active scans.</sub>
     <br/>
-    <sub>Written with ❤︎ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
+    <sub>Built with ❤︎ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
 </p>
 
 <img src="https://github.com/tijme/graphwave/raw/master/.github/preview.png" />
@@ -36,10 +36,10 @@ The Jython file is included in this project `./jython/jython-standalone-2.7.0.ja
 
 **Preview:** [latest build](https://github.com/tijme/graphwave/blob/master/thesis/.github/thesis-graphwave-tijme-gommers.pdf)
 
-Please note that the source of the thesis (LaTex) is not open-source at the moment.
+Please note that the thesis has been anonymized and some private information has been redacted. The source of the thesis (LaTex) is not open-source at the moment
 
 # Presentation
 
 **Preview:** [latest build](https://github.com/tijme/graphwave/blob/master/thesis/.github/presentation-graphwave-tijme-gommers.pdf)
 
-Please note that the source of the presentation (LaTex) is not open-source at the moment.
+Please note that the presentation has been anonymized and some private information has been redacted. The source of the presentation (LaTex) is not open-source at the moment
