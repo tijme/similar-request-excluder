@@ -36,10 +36,10 @@ The Jython file is included in this project `./jython/jython-standalone-2.7.0.ja
 
 **Preview:** [latest build](https://github.com/tijme/graphwave/blob/master/.github/thesis-graphwave-tijme-gommers.pdf)
 
-Please note that the thesis has been anonymized and some private information has been redacted. The source of the thesis (LaTex) is not open-source at the moment
+Please note that the thesis has been anonymised and some private information has been redacted. The source of the thesis (LaTex) is not open-source at the moment
 
 # Presentation
 
 **Preview:** [latest build](https://github.com/tijme/graphwave/blob/master/.github/thesis-presentation-tijme-gommers.pdf)
 
-Please note that the presentation has been anonymized and some private information has been redacted. The source of the presentation (LaTex) is not open-source at the moment
+Please note that the presentation has been anonymised and some private information has been redacted. The source of the presentation (LaTex) is not open-source at the moment
