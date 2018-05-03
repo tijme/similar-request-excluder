@@ -40,6 +40,6 @@ Please note that the thesis has been anonymised and some private information has
 
 # Presentation
 
-**Preview:** [latest build](https://github.com/tijme/graphwave/blob/master/.github/thesis-presentation-tijme-gommers.pdf)
+**Preview:** [latest build](https://github.com/tijme/graphwave/blob/master/.github/presentation-graphwave-tijme-gommers.pdf)
 
 Please note that the presentation has been anonymised and some private information has been redacted. The source of the presentation (LaTex) is not open-source at the moment
