@@ -30,6 +30,7 @@ update-alternatives --install /usr/bin/java java /opt/jdk-10.0.1/bin/java 1
 update-alternatives --install /usr/bin/javac javac /opt/jdk-10.0.1/bin/javac 1
 update-alternatives --set java /opt/jdk-10.0.1/bin/java
 update-alternatives --set javac /opt/jdk-10.0.1/bin/javac
+cp /opt/jdk-10.0.1/bin/* /opt/BurpSuitePro/jre/bin
 ```
 
 Now verify that it's working by executing `java --verison`.
