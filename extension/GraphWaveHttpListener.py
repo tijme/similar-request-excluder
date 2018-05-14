@@ -28,7 +28,7 @@ from burp import IHttpListener
 from threading import Lock
 
 class GraphWaveHttpListener(IHttpListener):
-    """The GraphWaveHttpListener listens to all spider packages flowing through Burp Suite.
+    """The GraphWaveHttpListener listens to all spider and proxy packages flowing through Burp Suite.
 
     Attributes:
         enabled (bool): If the extension should be listening.
@@ -78,7 +78,7 @@ class GraphWaveHttpListener(IHttpListener):
         if not self.enabled:
             return None
 
-        # If not a spider response, stop.
+        # If not a spider or proxy response, stop.
         if toolFlag not in [4,8] or messageIsRequest:
             return None
 
