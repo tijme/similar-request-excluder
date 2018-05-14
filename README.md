@@ -16,13 +16,37 @@
 
 ### Installation
 
+#### Oracle JDK
+
+Make sure you are using the Oracle JDK version 9 or 10. OpenJDK will **not** work! To install the Oracle JDK on Kali follow the instructions below.
+
+* Download the Java JDK (.tar.gz) from http://www.oracle.com/technetwork/java/javase/downloads/index.html
+* Execute the commands below in the folder you downloaded the Java JDK to.
+
+```
+tar -xzvf jdk-10.0.1_linux-x64_bin.tar.gz
+mv jdk-10.0.1 /opt/jdk-10.0.1
+update-alternatives --install /usr/bin/java java /opt/jdk-10.0.1/bin/java 1
+update-alternatives --install /usr/bin/javac javac /opt/jdk-10.0.1/bin/javac 1
+update-alternatives --set java /opt/jdk-10.0.1/bin/java
+update-alternatives --set javac /opt/jdk-10.0.1/bin/javac
+```
+
+Now verify that it's working by executing `java --verison`.
+
+#### Settings
+
+* Set Extender -> Options -> Python Environment -> Jython jar file to;
+    * ./graphwave/jython/jython-standalone-2.7.0.jar
+* Set Extender -> Options -> Python Environment -> Python module folder to;
+    * The Python3 modules folder. This can be found by executing:
+    * `python3 -c "import json; print(json.__file__.replace('/json/__init__.py',''))"`
+
+#### GraphWave
+
 Use the [guide](https://support.portswigger.net/customer/portal/articles/1965930-how-to-install-an-extension-in-burp-suite) from Burp Suite to install the GraphWave extension.
 
 The file that needs to be loaded is `./extension/Extension.py`.
-
-You also need to load Jython via the extender options in Burp Suite.
-
-The Jython file is included in this project `./jython/jython-standalone-2.7.0.jar`.
 
 ### Usage
 
