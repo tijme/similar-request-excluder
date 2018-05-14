@@ -78,8 +78,6 @@ class GraphWaveHttpListener(IHttpListener):
         if not self.enabled:
             return None
 
-        print(str(toolFlag) + " :: " + str(messageIsRequest) + "  :: " + str((toolFlag not in [4,8] )))
-
         # If not a spider response, stop.
         if toolFlag not in [4,8] or messageIsRequest:
             return None
