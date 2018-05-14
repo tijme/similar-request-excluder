@@ -147,7 +147,8 @@ class BurpExtender(ITab, IBurpExtender):
             callbacks.getHelpers()
         )
 
-        self.initializeInterface()
+        Platform.runLater(ExtensionRunnable(self.initializeInterface))
+
         self.burpThreadLooper()
 
         callbacks.addSuiteTab(self)
