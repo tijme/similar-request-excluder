@@ -9,8 +9,9 @@
     <br/>
     <sub>Built with ❤︎ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
 </p>
-
-<img src="https://github.com/tijme/graphwave/raw/master/.github/preview.png" width="600" />
+<p align="center">
+    <img src="https://github.com/tijme/graphwave/raw/master/.github/preview.png?cache=1" width="600" />
+</p>
 
 **Table of Contents:**
 * [Documentation](#documentation)
