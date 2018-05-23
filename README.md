@@ -13,11 +13,11 @@
 <img src="https://github.com/tijme/graphwave/raw/master/.github/preview.png" />
 
 **Table of Contents:**
-* [Documentation](#Documentation)
-* [Thesis](#Thesis)
-* [Presentation](#Presentation)
-* [Issues](#Issues)
-* [License](#License)
+* [Documentation](#documentation)
+* [Thesis](#thesis)
+* [Presentation](#presentation)
+* [Issues](#issues)
+* [License](#license)
 
 # Documentation
 
