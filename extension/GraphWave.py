@@ -206,7 +206,7 @@ class GraphWave:
 
         matchingPoints = 0
 
-        self.debug("------------------- Getting matching points -------------------")
+        self.debug("------------------- Getting matching points ------------------- (" + response.url + ")")
 
         for property in properties:
             if property not in self.edges_properties:

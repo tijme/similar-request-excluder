@@ -80,6 +80,7 @@ class GraphWavePropertyGenerator:
         parsed = urlparse(url)
 
         properties.append(GraphWaveProperty("url.scheme", 0.025, parsed.scheme))
+        properties.append(GraphWaveProperty("url.netloc", 1.000, parsed.netloc)) # Can't be set in GUI
         properties.extend(GraphWavePropertyGenerator.getUrlPathProperties(parsed.path, options))
         properties.extend(GraphWavePropertyGenerator.getUrlQueryProperties(parsed.query, options))
 

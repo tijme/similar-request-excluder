@@ -95,7 +95,6 @@ class GraphWaveHttpListener(IHttpListener):
                 self._config.exclude(request.getUrl().toString())
             else:
                 self._config.include(request.getUrl().toString())
-
         else:
             self._config.include(request.getUrl().toString())
 

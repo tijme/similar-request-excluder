@@ -126,7 +126,7 @@
                                                 <Font name="Verdana Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <CheckBox fx:id="enabledCheckbox" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" text="Tick to enable extension" GridPane.rowIndex="1" />
+                                        <CheckBox fx:id="enabledCheckbox" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" text="Tick to enable extension" GridPane.rowIndex="1" selected="true" />
 
                                         <!-- Minimum edge threshold -->
                                         <Label fx:id="metLabel" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" wrapText="true" GridPane.rowIndex="2" text="Minimum edge threshold">

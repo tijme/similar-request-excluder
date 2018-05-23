@@ -241,7 +241,7 @@ class BurpExtender(ITab, IBurpExtender):
         self.elements["version"].setText("Version " + ExtensionDetails.VERSION)
 
         # Status checkbox
-        self.onEnabledChange("enabled", None, 0, False)
+        self.onEnabledChange("enabled", None, 0, True, True)
         self.elements["enabledCheckbox"].selectedProperty().addListener(
             ExtensionChangeListener(self.onEnabledChange, "enabled")
         )
@@ -279,9 +279,13 @@ class BurpExtender(ITab, IBurpExtender):
         value = ("{0:." + str(decimals) + "f}").format(newValue)
         label.setText(title + " (" + value + ")")
 
+        if (elementKey == "mct"):
+            oldValue += 1.0
+            newValue += 1.0
+
         self._graph.setOption(elementKey, newValue)
 
-    def onEnabledChange(self, elementKey, observable, oldValue, isEnabled):
+    def onEnabledChange(self, elementKey, observable, oldValue, isEnabled, isInitialSet=False):
         """GUI slider change listener. Executed on the GUI thread.
 
         Args:
@@ -297,7 +301,9 @@ class BurpExtender(ITab, IBurpExtender):
         if isEnabled:
             self.elements["status"].setText("Status: " + ExtensionDetails.STATUS_ENABLED)
             self.elements["status"].setStyle("-fx-text-fill: #006600;")
-            self.onResetClick(None)
+
+            if not isInitialSet:
+                self.onResetClick(None)
         else:
             self.elements["status"].setText("Status: " + ExtensionDetails.STATUS_DISABLED)
             self.elements["status"].setStyle("-fx-text-fill: #cc0000;")
