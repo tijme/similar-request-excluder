@@ -89,7 +89,7 @@ class GraphWaveResponse:
 
         return str(self) != str(other)
 
-    def getSimilarity(self, other):
+    def getSimilarity(self, other, url):
         """Check if the given response is similar to this response.
 
         Returns:
@@ -97,7 +97,9 @@ class GraphWaveResponse:
 
         """
 
-        structural = GraphWaveSimilarity.getStructuralSimilarity(self.html, other.html)
-        style = GraphWaveSimilarity.getStyleSimilarity(self.html, other.html)
+        similarity = GraphWaveSimilarity(self.html, other.html)
+
+        structural = similarity.getStructuralSimilarity()
+        style = similarity.getStyleSimilarity()
 
         return (0.80 * structural) + (0.20 * style)

@@ -41,7 +41,7 @@ class ExtensionDetails:
 
     VERSION = "Unknown"
 
-    DEBUG = True
+    DEBUG = False
 
     STATUS_LOADING = "loading"
     STATUS_DISABLED = "disabled"

@@ -222,7 +222,7 @@ class GraphWave:
         stylometry_value = 0
 
         for response_in_graph in self.responses():
-            similarity = response.getSimilarity(response_in_graph)
+            similarity = response.getSimilarity(response_in_graph, response.url)
             if similarity > self.options["mst"]:
                 stylometry_count += 1
                 stylometry_value += similarity

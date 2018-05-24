@@ -23,30 +23,102 @@
 # SOFTWARE.
 
 import difflib
-import re
 import hashlib
+
+from GraphWaveDocumentParser import GraphWaveDocumentParser
 
 class GraphWaveSimilarity:
     """The GraphWaveHttpListener listens to all spider packages flowing through Burp Suite.
 
     Attributes:
-        tags_regex (obj): A regular expression that helps to extract HTML tags.
-        classes_regex (obj): A regular expression that helps to extract HTML classes.
-        structural_cache dict(obj): A key/value cache for HTML structures.
-        style_cache dict(obj): A key/value cache for HTML classes.
+        cache dict(obj): A key/value cache for all kinds of slow functionality.
 
     """
 
-    tags_regex = re.compile("<([a-zA-Z0-9]+)(([^<>])+)?>")
+    cache = {}
 
-    classes_regex = re.compile("class=(['\"`])(.+?)\1")
+    def __init__(self, document1, document2):
+        """Initialzie the similarityh measure class.
 
-    structural_cache = {}
+        Args:
+            document1 (str): The first document to measure.
+            document2 (str): The second document to measure.
 
-    style_cache = {}
+        """
 
-    @staticmethod
-    def getJaccardSimilarity(set1, set2):
+        self.document1 = document1.encode('utf-8')
+        self.document2 = document2.encode('utf-8')
+
+        self.parser1 = self.doCache("parser", self.getHashOf(self.document1), lambda : GraphWaveDocumentParser(self.document1))
+        self.parser2 = self.doCache("parser", self.getHashOf(self.document2), lambda : GraphWaveDocumentParser(self.document2))
+
+    def getHashOf(self, document):
+        """Get the hash for dict indexes.
+
+        Args:
+            document (str): The document to hash.
+
+        Returns:
+            str: The hash of the given document.
+
+        """
+
+        hash_object = hashlib.md5(document)
+        return hash_object.hexdigest()
+
+    def doCache(self, store, key, callback):
+        """Cache the given lambda in a store using the given key.
+
+        Args:
+            store (str): The cache store to use.
+            key (str): The index key (usually a hash).
+            callback (lambda): The callback containing the value.
+
+        Returns:
+            obj: The cached value of the callback function.
+
+        """
+
+        if not store in GraphWaveSimilarity.cache.keys():
+            GraphWaveSimilarity.cache[store] = {}
+
+        if not key in GraphWaveSimilarity.cache[store].keys():
+            GraphWaveSimilarity.cache[store][key] = callback()
+
+        return GraphWaveSimilarity.cache[store][key]
+
+    def getStructuralSimilarity(self):
+        """Get the structural similarity between two documents.
+
+        Returns:
+            (float): The structural similarity between the two documents.
+
+        """
+
+        tags1 = self.doCache("structural", self.getHashOf(self.document1), lambda : self.parser1.getTags())
+        tags2 = self.doCache("structural", self.getHashOf(self.document2), lambda : self.parser2.getTags())
+
+        diff = difflib.SequenceMatcher()
+
+        diff.set_seq1(tags1)
+        diff.set_seq2(tags2)
+
+        return diff.real_quick_ratio()
+
+    def getStyleSimilarity(self):
+        """Get the style similarity between two documents.
+
+        Returns:
+            (float): The style similarity between the two documents.
+
+        """
+
+        classes_page1 = self.doCache("style", self.getHashOf(self.document1), lambda : self.parser1.getClasses())
+        classes_page2 = self.doCache("style", self.getHashOf(self.document2), lambda : self.parser2.getClasses())
+
+        return self.getJaccardSimilarity(classes_page1, classes_page2)
+
+    def getJaccardSimilarity(self, set1, set2):
         """Get the Jaccard distance between two sets.
 
         Args:
@@ -68,115 +140,3 @@ class GraphWaveSimilarity:
 
         denominator = len(set1) + len(set2) - intersection
         return intersection / max(denominator, 0.000001)
-
-    @staticmethod
-    def getStructuralSimilarity(document1, document2):
-        """Get the structural similarity between two documents.
-
-        Args:
-            document1 (str): The first document to measure.
-            document2 (str): The second document to measure.
-
-        Returns:
-            (float): The structural similarity between the two documents.
-
-        """
-
-        # SET 1
-        hash_object1 = hashlib.md5(document1.encode('utf-8'))
-        hash_str1 = hash_object1.hexdigest()
-
-        if hash_str1 in GraphWaveSimilarity.structural_cache.keys():
-            tags1 = GraphWaveSimilarity.structural_cache[hash_str1]
-        else:
-            tags1 = GraphWaveSimilarity.getTagsFromDocument(document1.encode('utf-8'))
-            GraphWaveSimilarity.structural_cache[hash_str1] = tags1
-
-        # SET 2
-        hash_object2 = hashlib.md5(document2.encode('utf-8'))
-        hash_str2 = hash_object2.hexdigest()
-
-        if hash_str2 in GraphWaveSimilarity.structural_cache.keys():
-            tags2 = GraphWaveSimilarity.structural_cache[hash_str2]
-        else:
-            tags2 = GraphWaveSimilarity.getTagsFromDocument(document2.encode('utf-8'))
-            GraphWaveSimilarity.structural_cache[hash_str2] = tags2
-
-        diff = difflib.SequenceMatcher()
-
-        diff.set_seq1(tags1)
-        diff.set_seq2(tags2)
-
-        return diff.real_quick_ratio()
-
-    @staticmethod
-    def getStyleSimilarity(document1, document2):
-        """Get the style similarity between two documents.
-
-        Args:
-            document1 (str): The first document to measure.
-            document2 (str): The second document to measure.
-
-        Returns:
-            (float): The style similarity between the two documents.
-
-        """
-
-        # SET 1
-        hash_object1 = hashlib.md5(document1.encode('utf-8'))
-        hash_str1 = hash_object1.hexdigest()
-
-        if hash_str1 in GraphWaveSimilarity.style_cache.keys():
-            classes_page1 = GraphWaveSimilarity.style_cache[hash_str1]
-        else:
-            GraphWaveSimilarity.style_cache[hash_str1] = GraphWaveSimilarity.getClassesFromDocument(document1)
-            classes_page1 = GraphWaveSimilarity.style_cache[hash_str1]
-
-        # SET 2
-        hash_object2 = hashlib.md5(document2.encode('utf-8'))
-        hash_str2 = hash_object2.hexdigest()
-
-        if hash_str2 in GraphWaveSimilarity.style_cache.keys():
-            classes_page2 = GraphWaveSimilarity.style_cache[hash_str2]
-        else:
-            GraphWaveSimilarity.style_cache[hash_str2] = GraphWaveSimilarity.getClassesFromDocument(document2)
-            classes_page2 = GraphWaveSimilarity.style_cache[hash_str2]
-
-        return GraphWaveSimilarity.getJaccardSimilarity(classes_page1, classes_page2)
-
-    @staticmethod
-    def getTagsFromDocument(document):
-        """Get the HTML tags from a document.
-
-        Args:
-            document (str): The document to get HTML tags from.
-
-        Returns:
-            list(str): The tags/elements in the document.
-
-        """
-
-        results = re.findall(GraphWaveSimilarity.tags_regex, document)
-        return list(results)
-
-    @staticmethod
-    def getClassesFromDocument(document):
-        """Get the HTML style classes from a document.
-
-        Args:
-            document (str): The document to get HTML style classes from.
-
-        Returns:
-            set(str): The style classes in the document.
-
-        """
-
-        style_class_strings = re.findall(GraphWaveSimilarity.classes_regex, document)
-
-        result = set()
-
-        for style_class_string in style_class_strings:
-            for style_class in style_class_string.split():
-                result.add(style_class)
-
-        return result
