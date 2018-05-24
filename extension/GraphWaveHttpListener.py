@@ -86,12 +86,14 @@ class GraphWaveHttpListener(IHttpListener):
         response = self._helpers.analyzeResponse(requestResponse.getResponse())
         html = self._helpers.bytesToString(requestResponse.getResponse())
 
-        # self._lock.acquire()
-
         if self.shouldContinueWithMessage(request, response, html):
             response = GraphWaveResponse(request.getUrl().toString(), html)
 
-            if self._graph.addResponse(response) == False:
+            # self._lock.acquire()
+            response_was_added = self._graph.addResponse(response)
+            # self._lock.release()
+
+            if response_was_added == False:
                 self._config.exclude(request.getUrl().toString())
             else:
                 self._config.include(request.getUrl().toString())
@@ -99,7 +101,6 @@ class GraphWaveHttpListener(IHttpListener):
             self._config.include(request.getUrl().toString())
 
         self._refreshInterface()
-        # self._lock.release()
 
     def shouldContinueWithMessage(self, request, response, html):
         """Check if a message could be ignored. A message can't be ignored if

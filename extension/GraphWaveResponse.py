@@ -89,7 +89,7 @@ class GraphWaveResponse:
 
         return str(self) != str(other)
 
-    def getSimilarity(self, other, url):
+    def getSimilarity(self, other):
         """Check if the given response is similar to this response.
 
         Returns:

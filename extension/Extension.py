@@ -187,7 +187,7 @@ class BurpExtender(ITab, IBurpExtender):
             self.shouldRefreshInterface = False
             Platform.runLater(ExtensionRunnable(self.refreshInterfaceFunc))
 
-        threading.Timer(0.5, self.burpThreadLooper).start()
+        threading.Timer(1.0, self.burpThreadLooper).start()
 
     def loadConfigFromJson(self):
         """Start loading config from JSON in the main thread."""
