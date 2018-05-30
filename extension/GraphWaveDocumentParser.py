@@ -60,9 +60,9 @@ class GraphWaveDocumentParser:
 
         """
 
-        if indx in arr:
+        try:
             arr[indx] += char
-        else:
+        except:
             arr[indx] = char
 
     def parse(self):
