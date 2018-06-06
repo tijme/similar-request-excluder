@@ -1,0 +1,11 @@
+Uuid: 9ecd51851baf4ae6b69c6a951257387a
+ExtensionType: 2
+Name: Similar Request Excluder
+RepoName: similar-request-excluder
+ScreenVersion: 1.0.2
+SerialVersion: 1
+MinPlatformVersion: 0
+ProOnly: False
+Author: Tijme Gommers
+ShortDescription: Detects similar CFG-paths from HTTP responses, to improve efficiency of scans.
+EntryPoint: extension/Extension.py
