@@ -5,12 +5,12 @@
     <br/>
     <b>Detecting similar CFG-paths from HTTP responses in a black box manner</b>
     <br/>
-    <sub>Similar Request Excluder is an extension that enables you to automatically reduce the target scope of your active scan by excluding similar (and therefore redundant) requests.</sub>
+    <sub>An extension that enables you to automatically reduce the target scope of your active scan by excluding similar (and therefore redundant) requests.</sub>
     <br/>
     <sub>Built with ❤ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
 </p>
 <p align="center">
-    <img src="https://github.com/tijme/similar-request-excluder/raw/develop/.github/similar-request-excluder-logo" />
+    <img src="https://raw.githubusercontent.com/tijme/graphwave/develop/.github/similar-request-excluder-logo.svg" />
 </p>
 
 **Table of Contents:**
