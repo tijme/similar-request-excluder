@@ -10,7 +10,7 @@
     <sub>Built with ❤ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
 </p>
 <p align="center">
-    <img src="https://raw.githubusercontent.com/tijme/graphwave/develop/.github/similar-request-excluder-logo.svg" />
+    <img src="https://cdn.rawgit.com/tijme/graphwave/develop/.github/similar-request-excluder-logo.svg" />
 </p>
 
 **Table of Contents:**
