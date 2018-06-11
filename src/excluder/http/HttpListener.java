@@ -28,7 +28,7 @@ public class HttpListener implements IHttpListener, ChangeListener {
         this.graph = graph;
         this.lists = lists;
 
-        JCheckBox checkbox = (JCheckBox) options.get("enabled").getComponent();
+        JCheckBox checkbox = (JCheckBox) options.get(ExtensionOptions.OPTION_STATUS).getComponent();
         this.enabled = checkbox.isSelected();
         checkbox.addChangeListener(this);
     }
@@ -37,7 +37,7 @@ public class HttpListener implements IHttpListener, ChangeListener {
     public void stateChanged(ChangeEvent e) {
         JCheckBox source = (JCheckBox) e.getSource();
 
-        if (source == options.get("enabled").getComponent()) {
+        if (source == options.get(ExtensionOptions.OPTION_STATUS).getComponent()) {
             this.enabled = source.isSelected();
         }
     }

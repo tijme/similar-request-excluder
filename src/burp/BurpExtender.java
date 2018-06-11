@@ -1,5 +1,6 @@
 package burp;
 
+import excluder.ExtensionDebugger;
 import excluder.ExtensionDetails;
 import excluder.data.Graph;
 import excluder.data.Lists;
@@ -23,8 +24,7 @@ public class BurpExtender implements IBurpExtender, ITab {
     @Override
     public void registerExtenderCallbacks(final IBurpExtenderCallbacks callbacks) {
         ExtensionDetails.initialize();
-
-        PrintWriter stdout = new PrintWriter(callbacks.getStdout(),true);
+        ExtensionDebugger.initialize(callbacks);
 
         this.tab = new Tab();
         this.options = new ExtensionOptions(tab);
