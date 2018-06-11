@@ -1,0 +1,13 @@
+package excluder.http;
+
+public class SimilarityBlacklist {
+
+    public static boolean shouldProcess(String html) {
+        if (html.contains("Index of /") && html.contains("Last modified") && html.contains("<a href=\"?C=N;O=D\">")) {
+            return false;
+        }
+
+        return true;
+
+    }
+}

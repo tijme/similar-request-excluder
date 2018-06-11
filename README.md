@@ -1,5 +1,7 @@
 <h1 align="center">Similar Request Excluder</h1>
 <p align="center">
+    <img src="https://cdn.rawgit.com/tijme/graphwave/develop/.github/similar-request-excluder-logo.svg" />
+    <br/>
     <a href="https://github.com/tijme/similar-request-excluder/blob/develop/LICENSE.md"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=MIT" /></a>
     <a href="https://github.com/tijme/similar-request-excluder/releases"><img src="https://raw.finnwea.com/shield/?typeKey=SemverVersion&typeValue1=similar-request-excluder&typeValue2=develop&typeValue4=Stable&cache=5"></a>
     <br/>
@@ -8,9 +10,8 @@
     <sub>An extension that enables you to automatically reduce the target scope of your active scan by excluding similar (and therefore redundant) requests.</sub>
     <br/>
     <sub>Built with ❤ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
-</p>
-<p align="center">
-    <img src="https://cdn.rawgit.com/tijme/graphwave/develop/.github/similar-request-excluder-logo.svg" />
+    <br/>
+    <br/>
 </p>
 
 **Table of Contents:**
