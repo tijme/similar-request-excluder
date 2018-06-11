@@ -18,20 +18,20 @@ public class Tab implements ActionListener {
     private JSplitPane splitPane;
     private JScrollPane scrollPane;
     private JPanel optionsWrapper;
-    private JPanel details;
 
     private JList similarRequests;
 
     private JButton documentationButton;
     private JButton reportBugButton;
+    private JLabel amountResponsesScanned;
+    private JLabel amountUniqueResponsesFound;
+    private JLabel amountSimilarResponsesFound;
 
     public Tab() {
         this.title.setText(ExtensionDetails.TITLE);
         this.version.setText("Version " + ExtensionDetails.VERSION);
 
         this.splitPane.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Color.LIGHT_GRAY));
-        this.details.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.LIGHT_GRAY));
-
         this.scrollPane.setViewportView(new ScrollableSidebar(optionsWrapper));
 
         this.reportBugButton.addActionListener(this);
