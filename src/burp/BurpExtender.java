@@ -6,17 +6,22 @@ import excluder.ExtensionOptions;
 import excluder.views.Tab;
 
 import java.awt.*;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class BurpExtender implements IBurpExtender, ITab {
 
-    private Tab tab = new Tab();
+    private Tab tab;
 
-    private ExtensionOptions options = new ExtensionOptions(tab);
+    private ExtensionOptions options;
 
     @Override
     public void registerExtenderCallbacks(final IBurpExtenderCallbacks callbacks) {
+        ExtensionDetails.initialize();
+
         PrintWriter stdout = new PrintWriter(callbacks.getStdout(),true);
+
+        this.tab = new Tab();
+        this.options = new ExtensionOptions(tab);
 
         callbacks.setExtensionName(ExtensionDetails.TITLE);
         callbacks.registerHttpListener(new HttpListener());
@@ -33,4 +38,5 @@ public class BurpExtender implements IBurpExtender, ITab {
     public Component getUiComponent() {
         return tab.getPanel();
     }
+
 }
