@@ -16,12 +16,13 @@ public class SliderRow extends BaseRow implements ChangeListener {
     private JSlider slider = new JSlider();
 
     public SliderRow(String title, String description, Integer defaultValue) {
-        this(title, description, defaultValue, 100);
+        this(title, description, defaultValue, 0, 100);
     }
 
-    public SliderRow(String title, String description, Integer value, Integer maxValue) {
+    public SliderRow(String title, String description, Integer value, Integer minValue, Integer maxValue) {
         super(title, description);
 
+        this.slider.setMinimum(minValue);
         this.slider.setMaximum(maxValue);
         this.setValue(value);
     }
@@ -56,6 +57,8 @@ public class SliderRow extends BaseRow implements ChangeListener {
     @Override
     public Component getComponent() {
         slider.addChangeListener(this);
+        slider.setMajorTickSpacing(1);
+        slider.setMinorTickSpacing(1);
 
         return slider;
     }
@@ -70,7 +73,7 @@ public class SliderRow extends BaseRow implements ChangeListener {
         constraints.weighty = 0.0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(0, 5, 2, 5);
+        constraints.insets = new Insets(0, 10, 2, 10);
 
         JLabel title = getTitleComponent();
         panel.add(title, constraints);
@@ -81,7 +84,7 @@ public class SliderRow extends BaseRow implements ChangeListener {
         constraints.weighty = 0.0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(0, 5, 0, 5);
+        constraints.insets = new Insets(0, 10, 0, 10);
 
         JLabel description = getDescriptionComponent();
         panel.add(description, constraints);
@@ -92,7 +95,7 @@ public class SliderRow extends BaseRow implements ChangeListener {
         constraints.weighty = 0.0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(0, 5, 5, 5);
+        constraints.insets = new Insets(0, 10, 5, 10);
 
         Component component = getComponent();
         panel.add(component, constraints);

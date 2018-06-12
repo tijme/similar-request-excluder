@@ -48,7 +48,7 @@ public class GroupRow extends BaseRow {
         constraints.weighty = 0.0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(10, 5, hasDescription ? 0 : 8, 5);
+        constraints.insets = new Insets(10, 10, hasDescription ? 0 : 8, 10);
 
         Component component = getTitleComponent();
         panel.add(component, constraints);
@@ -60,7 +60,7 @@ public class GroupRow extends BaseRow {
             constraints.weighty = 0.0;
             constraints.fill = GridBagConstraints.HORIZONTAL;
             constraints.anchor = GridBagConstraints.CENTER;
-            constraints.insets = new Insets(0, 5, 8, 5);
+            constraints.insets = new Insets(0, 10, 8, 10);
 
             JLabel description = getDescriptionComponent();
             panel.add(description, constraints);

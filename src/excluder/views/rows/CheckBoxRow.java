@@ -58,7 +58,7 @@ public class CheckBoxRow extends BaseRow implements ChangeListener {
         constraints.weighty = 0.0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(0, 5, 2, 5);
+        constraints.insets = new Insets(0, 10, 2, 10);
 
         JLabel title = getTitleComponent();
         panel.add(title, constraints);
@@ -69,7 +69,7 @@ public class CheckBoxRow extends BaseRow implements ChangeListener {
         constraints.weighty = 0.0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(2, 5, 10, 5);
+        constraints.insets = new Insets(2, 10, 10, 10);
 
         Component component = getComponent();
         panel.add(component, constraints);

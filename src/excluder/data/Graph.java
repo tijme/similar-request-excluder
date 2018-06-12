@@ -1,5 +1,6 @@
 package excluder.data;
 
+import excluder.ExtensionDebugger;
 import excluder.ExtensionOptions;
 
 import java.util.ArrayList;
@@ -58,7 +59,8 @@ public class Graph {
                 continue;
             }
 
-            similarityPoints = options.getSliderValue(property.getOptionIdentifier());
+            similarityPoints += options.getSliderValue(property.getOptionIdentifier());
+//            ExtensionDebugger.output(property.getOptionIdentifier() + ": " + similarityPoints);
         }
 
         // Stylometry similarity
@@ -77,9 +79,12 @@ public class Graph {
         }
 
 
-        if (stylometrySimilarityCount < options.getSliderValue(ExtensionOptions.OPTION_MINIMUM_SIMILAR_REQUESTS)) {
+        if (stylometrySimilarityCount >= options.getSliderValue(ExtensionOptions.OPTION_MINIMUM_SIMILAR_REQUESTS)) {
             similarityPoints += stylometrySimilarityHighest;
+//            ExtensionDebugger.output("Stylometry: " + similarityPoints);
         }
+
+        ExtensionDebugger.output("Total: " + similarityPoints);
 
         return similarityPoints;
     }

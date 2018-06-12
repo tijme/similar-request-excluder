@@ -1,10 +1,12 @@
 package excluder.http;
 
 import burp.*;
+import excluder.ExtensionDebugger;
 import excluder.ExtensionOptions;
 import excluder.data.Graph;
 import excluder.data.Lists;
 import excluder.data.Node;
+import excluder.views.Tab;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -12,19 +14,24 @@ import javax.swing.event.ChangeListener;
 
 public class HttpListener implements IHttpListener, ChangeListener {
 
-    private ExtensionOptions options;
+    private final ExtensionOptions options;
 
-    private IExtensionHelpers helpers;
+    private final IExtensionHelpers helpers;
 
-    private Graph graph;
+    private final Tab tab;
 
-    private Lists lists;
+    private final Graph graph;
+
+    private final Lists lists;
 
     private boolean enabled;
 
-    public HttpListener(ExtensionOptions options, IExtensionHelpers helpers, Graph graph, Lists lists) {
+    private long averageMilliseconds = 1;
+
+    public HttpListener(ExtensionOptions options, IExtensionHelpers helpers, Tab tab, Graph graph, Lists lists) {
         this.options = options;
         this.helpers = helpers;
+        this.tab = tab;
         this.graph = graph;
         this.lists = lists;
 
@@ -57,19 +64,28 @@ public class HttpListener implements IHttpListener, ChangeListener {
         String html = helpers.bytesToString(messageInfo.getResponse());
         String url = request.getUrl().toString();
 
-        if (!shouldCertainlyMarkMessageAsUnique(request, response, html)) {
-            lists.addUnique(url);
+        if (shouldCertainlyMarkMessageAsUnique(request, response, html)) {
+            lists.addUnique(tab, url);
             return;
         }
 
+        long start = System.nanoTime();
         boolean is_similar = graph.tryToAddNode(new Node(url, html));
+        long elapsed = (System.nanoTime() - start) / 1000000;
+
+        if (elapsed > 0) {
+            ExtensionDebugger.output("AM: " + averageMilliseconds);
+            ExtensionDebugger.output("EL: " + elapsed);
+            averageMilliseconds = (averageMilliseconds + elapsed) / 2;
+            tab.setAmountAdditionalMilliseconds(averageMilliseconds);
+        }
 
         if (is_similar) {
-            lists.addSimilar(url);
+            lists.addSimilar(tab, url);
             return;
         }
 
-        lists.addUnique(url);
+        lists.addUnique(tab, url);
     }
 
     private boolean isIntendedForUs(int toolFlag, boolean messageIsRequest, IHttpRequestResponse messageInfo) {
@@ -86,17 +102,17 @@ public class HttpListener implements IHttpListener, ChangeListener {
 
     private boolean shouldCertainlyMarkMessageAsUnique(IRequestInfo request, IResponseInfo response, String html) {
         if (response.getStatusCode() != 200) {
-            return false;
+            return true;
         }
 
         if (!response.getStatedMimeType().toLowerCase().contains("html")) {
-            return false;
+            return true;
         }
 
         if (!SimilarityBlacklist.shouldProcess(html)) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 }

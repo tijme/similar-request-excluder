@@ -9,15 +9,14 @@ import excluder.ExtensionOptions;
 import excluder.views.Tab;
 
 import java.awt.*;
-import java.io.*;
 
 public class BurpExtender implements IBurpExtender, ITab {
 
     private Tab tab;
 
-    private ExtensionOptions options;
+    private Graph graph;
 
-    private Graph graph = new Graph(options);
+    private ExtensionOptions options;
 
     private Lists lists = new Lists();
 
@@ -28,8 +27,9 @@ public class BurpExtender implements IBurpExtender, ITab {
 
         this.tab = new Tab();
         this.options = new ExtensionOptions(tab);
+        this.graph = new Graph(options);
 
-        HttpListener httpListener = new HttpListener(options, callbacks.getHelpers(), graph, lists);
+        HttpListener httpListener = new HttpListener(options, callbacks.getHelpers(), tab, graph, lists);
 
         callbacks.setExtensionName(ExtensionDetails.TITLE);
         callbacks.registerHttpListener(httpListener);

@@ -22,6 +22,8 @@ public class ExtensionOptions {
     public static final String OPTION_URL_QUERY_NUMBER_MATCH = "urlQueryNumberMatch";
     public static final String OPTION_URL_QUERY_WORD_MATCH = "urlQueryWordMatch";
     public static final String OPTION_URL_QUERY_SLUG_MATCH = "urlQuerySlugMatch";
+    public static final String OPTION_URL_META_PROTOCOL_MATCH = "urlMetaProtocolMatch";
+    public static final String OPTION_URL_META_HOST_MATCH = "urlMetaHostMatch";
 
     private Tab tab;
 
@@ -37,8 +39,8 @@ public class ExtensionOptions {
         this.addGroup("General settings");
         this.add(OPTION_STATUS, new CheckBoxRow("Status", "Tick to enable.", true));
         this.add(OPTION_DEBUG, new CheckBoxRow("Debug", "Tick to enable.", false));
-        this.add(OPTION_MINIMUM_SIMILAR_REQUESTS, new SliderRow("Minimum similar requests", "The minimum amount of similar requests to scan (to prevent false positives).", 15));
-        this.add(OPTION_SIMILARITY_POINTS_REQUIRED, new SliderRow("Similarity points required", "The minimum amount of points to mark the request as similar.", 100, 200));
+        this.add(OPTION_MINIMUM_SIMILAR_REQUESTS, new SliderRow("Minimum similar requests", "The minimum amount of similar requests to scan (to prevent false positives).", 15, 1, 100));
+        this.add(OPTION_SIMILARITY_POINTS_REQUIRED, new SliderRow("Similarity points required", "The minimum amount of points to mark the request as similar.", 200, 1, 300));
 
         this.addSeparator();
 
@@ -60,6 +62,11 @@ public class ExtensionOptions {
         this.add(OPTION_URL_QUERY_NUMBER_MATCH, new SliderRow("Number match in URL query", "Matches on the regular expression: <code>/[0-9]+?/</code>.", 15));
         this.add(OPTION_URL_QUERY_WORD_MATCH, new SliderRow("Word match in URL query", "Matches on the regular expression: <code>/A-Za-z]+?/</code>.", 5));
         this.add(OPTION_URL_QUERY_SLUG_MATCH, new SliderRow("Slug match in URL query", "Matches on the regular expression: <code>/[A-Za-z0-9-_\\.]+?/</code>.", 2));
+
+        this.addSeparator();
+        this.addGroup("URL meta points", "The default settings should be sufficient.");
+        this.add(OPTION_URL_META_PROTOCOL_MATCH, new SliderRow("Exact match on URL protocol", "Exact match on the URL protocol (e.g. https or http).", 2));
+        this.add(OPTION_URL_META_HOST_MATCH, new SliderRow("Exact match on URL hostname", "Exact match on the hostname (e.g. google.com).", 100));
 
         this.render();
     }
