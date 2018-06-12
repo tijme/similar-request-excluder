@@ -88,7 +88,7 @@ public class Tab implements ActionListener {
     }
 
     public void setAmountAdditionalMilliseconds(long newValue) {
-        amountAdditionalMilliseconds.setText("<html><b>~ " + newValue + "</b> additional milliseconds per request.</html>");
+        amountAdditionalMilliseconds.setText("<html><b>~" + newValue + "</b> additional milliseconds per request.</html>");
     }
 
 }

@@ -6,6 +6,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Node {
 
@@ -15,9 +16,9 @@ public class Node {
 
     private ArrayList<Edge> properties;
 
-    private ArrayList<String> elements;
+    private String[] elements;
 
-    private ArrayList<String> styleClasses;
+    private String[] styleClasses;
 
     public Node(String url, String html) {
         this.url = url;
@@ -31,11 +32,8 @@ public class Node {
     }
 
     public int getSimilarity(Node otherNode) {
-        Document thisDocument = Jsoup.parse(this.getHtml());
-        Document otherDocument = Jsoup.parse(otherNode.getHtml());
-
-        int treeSimilarity = SimilarityHelper.getTreeSimilarity(this, otherNode, thisDocument, otherDocument);
-        int styleSimilarity = SimilarityHelper.getStyleSimilarity(this, otherNode, thisDocument, otherDocument);
+        int treeSimilarity = SimilarityHelper.getTreeSimilarity(this, otherNode);
+        int styleSimilarity = SimilarityHelper.getStyleSimilarity(this, otherNode);
 
         return (treeSimilarity / 100 * 80) + (styleSimilarity / 100 * 20);
     }
@@ -50,19 +48,19 @@ public class Node {
         return this.hashCode() == obj.hashCode();
     }
 
-    public void setElements(ArrayList<String> elements) {
+    public void setElements(String[] elements) {
         this.elements = elements;
     }
 
-    public ArrayList<String> getElements() {
+    public String[] getElements() {
         return this.elements;
     }
 
-    public void setStyleClasses(ArrayList<String> styleClasses) {
+    public void setStyleClasses(String[] styleClasses) {
         this.styleClasses = styleClasses;
     }
 
-    public ArrayList<String> getStyleClasses() {
+    public String[] getStyleClasses() {
         return this.styleClasses;
     }
 
