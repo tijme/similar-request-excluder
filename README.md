@@ -1,6 +1,6 @@
 <h1 align="center">Similar Request Excluder</h1>
 <p align="center">
-    <img src="https://cdn.rawgit.com/tijme/graphwave/develop/.github/similar-request-excluder-logo.svg" />
+    <img src="https://cdn.rawgit.com/tijme/graphwave/develop/.github/similar-request-excluder-logo.svg?cache=1" />
     <br/>
     <a href="https://github.com/tijme/similar-request-excluder/blob/develop/LICENSE.md"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=MIT" /></a>
     <a href="https://github.com/tijme/similar-request-excluder/releases"><img src="https://raw.finnwea.com/shield/?typeKey=SemverVersion&typeValue1=similar-request-excluder&typeValue2=develop&typeValue4=Stable&cache=5"></a>
