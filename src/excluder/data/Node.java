@@ -2,40 +2,48 @@ package excluder.data;
 
 import excluder.helpers.EdgeHelper;
 import excluder.helpers.SimilarityHelper;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.regex.Pattern;
 
 public class Node {
 
-    private String url;
+    private URL url;
 
     private String html;
 
+    private boolean propertiesLoaded = false;
+
     private ArrayList<Edge> properties;
 
-    private String[] elements;
+    private HashSet<String> elements;
 
-    private String[] styleClasses;
+    private HashSet<String> styleClasses;
 
-    public Node(String url, String html) {
+    private JSONObject jsonRepresentation;
+
+    public Node(URL url, String html) {
         this.url = url;
         this.html = html;
-
-        this.properties = EdgeHelper.getEdges(url, html);
     }
 
     public ArrayList<Edge> getProperties() {
+        if (!this.propertiesLoaded) {
+            this.properties = EdgeHelper.getEdges(url, html);
+            this.propertiesLoaded = true;
+        }
+
         return this.properties;
     }
 
     public int getSimilarity(Node otherNode) {
-        int treeSimilarity = SimilarityHelper.getTreeSimilarity(this, otherNode);
-        int styleSimilarity = SimilarityHelper.getStyleSimilarity(this, otherNode);
+        double treeSimilarity = SimilarityHelper.getTreeSimilarity(this, otherNode);
+        double styleSimilarity = SimilarityHelper.getStyleSimilarity(this, otherNode);
 
-        return (treeSimilarity / 100 * 80) + (styleSimilarity / 100 * 20);
+        return (int) ((treeSimilarity / 100 * 80) + (styleSimilarity / 100 * 20));
     }
 
     @Override
@@ -48,28 +56,41 @@ public class Node {
         return this.hashCode() == obj.hashCode();
     }
 
-    public void setElements(String[] elements) {
+    public void setElements(HashSet<String> elements) {
         this.elements = elements;
     }
 
-    public String[] getElements() {
+    public HashSet<String> getElements() {
         return this.elements;
     }
 
-    public void setStyleClasses(String[] styleClasses) {
+    public void setStyleClasses(HashSet<String> styleClasses) {
         this.styleClasses = styleClasses;
     }
 
-    public String[] getStyleClasses() {
+    public HashSet<String> getStyleClasses() {
         return this.styleClasses;
     }
 
-    public String getUrl() {
+    public URL getUrl() {
         return this.url;
     }
 
     public String getHtml() {
         return this.html;
+    }
+
+    public JSONObject getJSONRepresentation() {
+        if (this.jsonRepresentation == null) {
+            jsonRepresentation = new JSONObject();
+            jsonRepresentation.put("enabled", true);
+            jsonRepresentation.put("file", "^" + Pattern.quote(url.getFile()) + "$");
+            jsonRepresentation.put("host", "^" + Pattern.quote(url.getPath()) + "$");
+            jsonRepresentation.put("port", "^" + url.getPort() + "$");
+            jsonRepresentation.put("protocol", "^" + Pattern.quote(url.getProtocol()) + "$");
+        }
+
+        return this.jsonRepresentation;
     }
 
 }

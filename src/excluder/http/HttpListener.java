@@ -62,30 +62,30 @@ public class HttpListener implements IHttpListener, ChangeListener {
         IRequestInfo request = helpers.analyzeRequest(messageInfo);
         IResponseInfo response = helpers.analyzeResponse(messageInfo.getResponse());
         String html = helpers.bytesToString(messageInfo.getResponse());
-        String url = request.getUrl().toString();
 
         if (shouldCertainlyMarkMessageAsUnique(request, response, html)) {
-            lists.addUnique(tab, url);
+            lists.addUnique(tab, new Node(request.getUrl(), html));
             return;
         }
 
         long start = System.nanoTime();
-        boolean is_similar = graph.tryToAddNode(new Node(url, html));
+
+        Node node = new Node(request.getUrl(), html);
+        boolean is_similar = graph.tryToAddNode(node);
+
         long elapsed = (System.nanoTime() - start) / 1000000;
 
         if (elapsed > 0) {
-            ExtensionDebugger.output("AM: " + averageMilliseconds);
-            ExtensionDebugger.output("EL: " + elapsed);
             averageMilliseconds = (averageMilliseconds + elapsed) / 2;
             tab.setAmountAdditionalMilliseconds(averageMilliseconds);
         }
 
         if (is_similar) {
-            lists.addSimilar(tab, url);
+            lists.addSimilar(tab, node);
             return;
         }
 
-        lists.addUnique(tab, url);
+        lists.addUnique(tab, node);
     }
 
     private boolean isIntendedForUs(int toolFlag, boolean messageIsRequest, IHttpRequestResponse messageInfo) {

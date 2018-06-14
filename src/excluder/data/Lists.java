@@ -1,31 +1,46 @@
 package excluder.data;
 
+import excluder.ExtensionDebugger;
 import excluder.views.Tab;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Lists {
 
-    private HashSet<String> uniqueRequests = new HashSet<String>();
+    private HashSet<Node> uniqueRequests = new HashSet<>();
 
-    private HashSet<String> similarRequests = new HashSet<String>();
+    private HashSet<Node> similarRequests = new HashSet<>();
 
-    public void addUnique(Tab tab, String url) {
-        uniqueRequests.add(url);
+    private HashSet<Node> newSimilarRequests = new HashSet<>();
+
+    public void addUnique(Tab tab, Node node) {
+        uniqueRequests.add(node);
 
         tab.setAmountUniqueResponsesFound(uniqueRequests.size());
         tab.setAmountResponsesScanned(uniqueRequests.size() + similarRequests.size());
     }
 
-    public void addSimilar(Tab tab, String url) {
-        if (!similarRequests.contains(url)) {
-            tab.getSimilarRequestsModel().addElement(url);
-        }
-
-        similarRequests.add(url);
+    public void addSimilar(Tab tab, Node node) {
+        newSimilarRequests.add(node);
+        similarRequests.add(node);
 
         tab.setAmountSimilarResponsesFound(similarRequests.size());
         tab.setAmountResponsesScanned(similarRequests.size() + uniqueRequests.size());
+    }
+
+    public HashSet<Node> getUniqueRequests() {
+        return this.uniqueRequests;
+    }
+
+    public HashSet<Node> getSimilarRequests() {
+        return this.similarRequests;
+    }
+
+    public ArrayList<Node> getNewSimilarRequests() {
+        ArrayList<Node> result = new ArrayList<>(newSimilarRequests);
+        newSimilarRequests = new HashSet<>();
+        return result;
     }
 
 }

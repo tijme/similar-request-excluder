@@ -5,26 +5,29 @@ import excluder.ExtensionOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Graph {
 
     private final ExtensionOptions options;
 
     private final HashMap<Edge, ArrayList<Node>> edgesWithNodes = new HashMap<>();
-    private final HashMap<Node, ArrayList<Edge>> nodesWithEdges = new HashMap<>();
+
+    private final HashMap<Node, Boolean> results = new HashMap<>();
 
     public Graph(ExtensionOptions options) {
         this.options = options;
     }
 
     public boolean tryToAddNode(Node node) {
-        if (nodesWithEdges.containsKey(node)) {
-            return false;
+        if (results.containsKey(node)) {
+            return results.get(node);
         }
 
         int similarityPointsRequired = options.getSliderValue(ExtensionOptions.OPTION_SIMILARITY_POINTS_REQUIRED);
 
         if (getSimilarityPoints(node) >= similarityPointsRequired) {
+            results.put(node, true);
             return true;
         }
 
@@ -37,17 +40,17 @@ public class Graph {
             edgesWithNodes.get(property).add(node);
         }
 
-        // Add node
-        nodesWithEdges.put(node, node.getProperties());
-
+        results.put(node, false);
         return false;
     }
 
     private int getSimilarityPoints(Node node) {
         int similarityPoints = 0;
 
-        int stylometrySimilarityHighest = 0;
+        int stylometrySimilarityValue = 0;
         int stylometrySimilarityCount = 0;
+
+        HashSet<Node> propertyNodes = new HashSet<Node>();
 
         // Property similarities
         for(Edge property : node.getProperties()) {
@@ -59,12 +62,12 @@ public class Graph {
                 continue;
             }
 
+            propertyNodes.addAll(edgesWithNodes.get(property));
             similarityPoints += options.getSliderValue(property.getOptionIdentifier());
-//            ExtensionDebugger.output(property.getOptionIdentifier() + ": " + similarityPoints);
         }
 
         // Stylometry similarity
-        for (Node otherNode : nodesWithEdges.keySet()) {
+        for (Node otherNode : propertyNodes) {
             int similarity = node.getSimilarity(otherNode);
 
             if (similarity < options.getSliderValue(ExtensionOptions.OPTION_MINIMUM_TREE_SIMILARITY)) {
@@ -72,19 +75,13 @@ public class Graph {
             }
 
             stylometrySimilarityCount ++;
-
-            if (similarity > stylometrySimilarityHighest) {
-                stylometrySimilarityHighest = similarity;
-            }
+            stylometrySimilarityValue += similarity;
         }
 
 
         if (stylometrySimilarityCount >= options.getSliderValue(ExtensionOptions.OPTION_MINIMUM_SIMILAR_REQUESTS)) {
-            similarityPoints += stylometrySimilarityHighest;
-//            ExtensionDebugger.output("Stylometry: " + similarityPoints);
+            similarityPoints += stylometrySimilarityValue / stylometrySimilarityCount;
         }
-
-        ExtensionDebugger.output("Total: " + similarityPoints);
 
         return similarityPoints;
     }

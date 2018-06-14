@@ -18,6 +18,7 @@ public class Tab implements ActionListener {
     private JSplitPane splitPane;
     private JScrollPane optionScrollPane;
     private JScrollPane requestsScrollPane;
+    private JPanel actionsPane;
     private JPanel optionsWrapper;
 
     private DefaultListModel<String> similarRequestsModel = new DefaultListModel<>();
@@ -36,6 +37,8 @@ public class Tab implements ActionListener {
         this.version.setText("Version " + ExtensionDetails.VERSION);
 
         this.splitPane.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Color.LIGHT_GRAY));
+        this.actionsPane.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.LIGHT_GRAY));
+
         this.optionScrollPane.setViewportView(new ScrollableSidebar(optionsWrapper));
 
         this.reportBugButton.addActionListener(this);

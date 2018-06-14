@@ -16,19 +16,12 @@ public class EdgeHelper {
 
     private static String slugMatch = "^[.A-Za-z0-9_-]+$";
 
-    public static ArrayList<Edge> getEdges(String urlSpec, String html) {
+    public static ArrayList<Edge> getEdges(URL url, String html) {
         ArrayList<Edge> properties = new ArrayList<Edge>();
 
-        try {
-            URL url = new URL(urlSpec);
-
-            addUrlMetaEdges(properties, url);
-            addUrlPathEdges(properties, url);
-            addUrlQueryEdges(properties, url);
-
-        } catch (MalformedURLException e) {
-            ExtensionDebugger.error(e.getMessage());
-        }
+        addUrlMetaEdges(properties, url);
+        addUrlPathEdges(properties, url);
+        addUrlQueryEdges(properties, url);
 
         return properties;
     }
