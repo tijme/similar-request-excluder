@@ -1,7 +1,6 @@
 package excluder.http;
 
 import burp.*;
-import excluder.ExtensionDebugger;
 import excluder.ExtensionOptions;
 import excluder.data.Graph;
 import excluder.data.Lists;
@@ -59,6 +58,8 @@ public class HttpListener implements IHttpListener, ChangeListener {
             return;
         }
 
+        long start = System.currentTimeMillis();
+
         IRequestInfo request = helpers.analyzeRequest(messageInfo);
         IResponseInfo response = helpers.analyzeResponse(messageInfo.getResponse());
         String html = helpers.bytesToString(messageInfo.getResponse());
@@ -68,16 +69,13 @@ public class HttpListener implements IHttpListener, ChangeListener {
             return;
         }
 
-        long start = System.nanoTime();
-
         Node node = new Node(request.getUrl(), html);
         boolean is_similar = graph.tryToAddNode(node);
 
-        long elapsed = (System.nanoTime() - start) / 1000000;
-
+        long elapsed = (System.currentTimeMillis() - start);
         if (elapsed > 0) {
             averageMilliseconds = (averageMilliseconds + elapsed) / 2;
-            tab.setAmountAdditionalMilliseconds(averageMilliseconds);
+            tab.setAmountAdditionalMilliseconds(elapsed);
         }
 
         if (is_similar) {

@@ -9,7 +9,7 @@ public class JaccardSimilarity {
         int rightSize = right.size();
 
         if (leftSize == 0 || rightSize == 0) {
-            return 0;
+            return -1;
         }
 
         left.retainAll(right);

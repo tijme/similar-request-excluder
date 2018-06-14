@@ -14,11 +14,13 @@ import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class BurpExtender implements IBurpExtender, ITab {
+public class BurpExtender implements IBurpExtender, ITab, IExtensionStateListener {
 
     private IBurpExtenderCallbacks callbacks;
 
     private Tab tab;
+
+    private Timer delayedFetcher = new Timer();;
 
     private Graph graph;
 
@@ -36,15 +38,10 @@ public class BurpExtender implements IBurpExtender, ITab {
             JSONObject config = new JSONObject(callbacks.saveConfigAsJson("target.scope"));
             config.getJSONObject("target").getJSONObject("scope").put("advanced_mode", true);
 
-            ExtensionDebugger.output("New items: " + lists.getNewSimilarRequests().size());
-
             for (Node newNode : lists.getNewSimilarRequests()) {
                 tab.getSimilarRequestsModel().addElement(newNode.getUrl().toString());
-                ExtensionDebugger.output("New: " + newNode.getJSONRepresentation().toString());
                 config.getJSONObject("target").getJSONObject("scope").getJSONArray("exclude").put(newNode.getJSONRepresentation());
             }
-
-            ExtensionDebugger.output(config.toString());
 
             callbacks.loadConfigFromJson(config.toString());
         }
@@ -65,9 +62,15 @@ public class BurpExtender implements IBurpExtender, ITab {
 
         callbacks.setExtensionName(ExtensionDetails.TITLE);
         callbacks.registerHttpListener(httpListener);
+        callbacks.registerExtensionStateListener(this);
         callbacks.addSuiteTab(this);
 
-        new Timer().schedule(new DelayedFetcher(), 0, 5000);
+        delayedFetcher.schedule(new DelayedFetcher(), 0, 5000);
+    }
+
+    @Override
+    public void extensionUnloaded() {
+        delayedFetcher.cancel();
     }
 
     @Override

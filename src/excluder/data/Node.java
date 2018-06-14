@@ -43,6 +43,14 @@ public class Node {
         double treeSimilarity = SimilarityHelper.getTreeSimilarity(this, otherNode);
         double styleSimilarity = SimilarityHelper.getStyleSimilarity(this, otherNode);
 
+        if (treeSimilarity == -1 && styleSimilarity > -1) {
+            return (int) styleSimilarity;
+        }
+
+        if (styleSimilarity == -1 && treeSimilarity > -1) {
+            return (int) treeSimilarity;
+        }
+
         return (int) ((treeSimilarity / 100 * 80) + (styleSimilarity / 100 * 20));
     }
 
@@ -85,9 +93,9 @@ public class Node {
             jsonRepresentation = new JSONObject();
             jsonRepresentation.put("enabled", true);
             jsonRepresentation.put("file", "^" + Pattern.quote(url.getFile()) + "$");
-            jsonRepresentation.put("host", "^" + Pattern.quote(url.getPath()) + "$");
+            jsonRepresentation.put("host", "^" + Pattern.quote(url.getHost()) + "$");
             jsonRepresentation.put("port", "^" + url.getPort() + "$");
-            jsonRepresentation.put("protocol", "^" + Pattern.quote(url.getProtocol()) + "$");
+            jsonRepresentation.put("protocol", url.getProtocol().toUpperCase());
         }
 
         return this.jsonRepresentation;
