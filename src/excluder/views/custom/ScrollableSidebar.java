@@ -25,7 +25,7 @@ public class ScrollableSidebar extends JPanel implements Scrollable {
 
     @Override
     public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
-        return (10);
+        return (15);
     }
 
     @Override

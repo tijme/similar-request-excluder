@@ -25,7 +25,8 @@ public class HttpListener implements IHttpListener, ChangeListener {
 
     private boolean enabled;
 
-    private long averageMilliseconds = 1;
+    private long averageMilliseconds = 0;
+    private long averageMillisecondsCount = 0;
 
     public HttpListener(ExtensionOptions options, IExtensionHelpers helpers, Tab tab, Graph graph, Lists lists) {
         this.options = options;
@@ -74,8 +75,14 @@ public class HttpListener implements IHttpListener, ChangeListener {
 
         long elapsed = (System.currentTimeMillis() - start);
         if (elapsed > 0) {
-            averageMilliseconds = (averageMilliseconds + elapsed) / 2;
-            tab.setAmountAdditionalMilliseconds(elapsed);
+            averageMillisecondsCount ++;
+            if (averageMilliseconds == 0) {
+                averageMilliseconds = elapsed;
+            } else {
+                averageMilliseconds -= averageMilliseconds / averageMillisecondsCount;
+                averageMilliseconds += elapsed / averageMillisecondsCount;
+                tab.setAmountAdditionalMilliseconds(averageMilliseconds);
+            }
         }
 
         if (is_similar) {

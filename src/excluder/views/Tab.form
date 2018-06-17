@@ -27,8 +27,7 @@
         </properties>
         <border type="empty"/>
         <children>
-          <grid id="192a1" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="192a1" layout-manager="GridBagLayout">
             <constraints>
               <splitpane position="right"/>
             </constraints>
@@ -40,7 +39,8 @@
             <children>
               <scrollpane id="82ff1" binding="requestsScrollPane">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="1.0" weighty="1.0"/>
                 </constraints>
                 <properties>
                   <horizontalScrollBarPolicy value="31"/>
@@ -51,24 +51,15 @@
                   <component id="14bfc" class="javax.swing.JList" binding="similarRequests">
                     <constraints/>
                     <properties>
+                      <maximumSize width="-1" height="-1"/>
+                      <minimumSize width="-1" height="-1"/>
+                      <preferredSize width="-1" height="-1"/>
                       <requestFocusEnabled value="false"/>
                       <selectionMode value="0"/>
                     </properties>
                   </component>
                 </children>
               </scrollpane>
-              <grid id="91447" binding="actionsPane" layout-manager="GridBagLayout">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="1" fill="1" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="100"/>
-                    <preferred-size width="-1" height="100"/>
-                    <maximum-size width="-1" height="100"/>
-                  </grid>
-                </constraints>
-                <properties/>
-                <border type="empty"/>
-                <children/>
-              </grid>
             </children>
           </grid>
           <grid id="93aa7" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -112,7 +103,7 @@
           </grid>
         </children>
       </splitpane>
-      <grid id="7179d" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="7179d" layout-manager="GridLayoutManager" row-count="1" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="10" bottom="5" right="10"/>
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -126,7 +117,7 @@
         <children>
           <component id="dd726" class="javax.swing.JLabel" binding="amountResponsesScanned">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="30"/>
                 <preferred-size width="-1" height="30"/>
                 <maximum-size width="-1" height="30"/>
@@ -140,7 +131,7 @@
           </component>
           <component id="a9eed" class="javax.swing.JLabel" binding="amountUniqueResponsesFound">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="30"/>
                 <preferred-size width="-1" height="30"/>
                 <maximum-size width="-1" height="30"/>
@@ -154,7 +145,7 @@
           </component>
           <component id="c9ac" class="javax.swing.JLabel" binding="amountSimilarResponsesFound">
             <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+              <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="30"/>
                 <preferred-size width="-1" height="30"/>
                 <maximum-size width="-1" height="30"/>
@@ -168,15 +159,45 @@
           </component>
           <hspacer id="69360">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
           <component id="27ae8" class="javax.swing.JLabel" binding="amountAdditionalMilliseconds">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="0 additional milliseconds per request."/>
+            </properties>
+          </component>
+          <component id="2065c" class="javax.swing.JLabel" binding="versionLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font style="2"/>
+              <foreground color="-16777046"/>
+              <text value="Release v0.0.0."/>
+            </properties>
+          </component>
+          <component id="420f2" class="javax.swing.JLabel" binding="documentationLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font/>
+              <foreground color="-16777046"/>
+              <text value="View Documentation."/>
+            </properties>
+          </component>
+          <component id="9f260" class="javax.swing.JLabel" binding="bugLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font/>
+              <foreground color="-16777046"/>
+              <text value="Report Bug."/>
             </properties>
           </component>
         </children>
@@ -215,39 +236,24 @@
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <component id="cab03" class="javax.swing.JLabel" binding="version">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="32"/>
-                <preferred-size width="-1" height="32"/>
-                <maximum-size width="-1" height="32"/>
-              </grid>
-            </constraints>
-            <properties>
-              <font size="12" style="2"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
-              <text value="v1.0.0"/>
-              <verticalAlignment value="3"/>
-              <verticalTextPosition value="3"/>
-            </properties>
-          </component>
-          <component id="f372b" class="javax.swing.JButton" binding="documentationButton">
+          <component id="f372b" class="javax.swing.JButton" binding="exportSimilarButton">
             <constraints>
               <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <actionCommand value="documentation"/>
-              <text value="Documentation"/>
+              <actionCommand value="exportSimilar"/>
+              <label value="Export Similar URLs"/>
+              <text value="Export Similar URLs"/>
             </properties>
           </component>
-          <component id="90094" class="javax.swing.JButton" binding="reportBugButton">
+          <component id="90094" class="javax.swing.JButton" binding="exportUniqueButton">
             <constraints>
               <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <actionCommand value="report-bug"/>
-              <text value="Report Bug"/>
+              <actionCommand value="exportUnique"/>
+              <label value="Export Unique URLs"/>
+              <text value="Export Unique URLs"/>
             </properties>
           </component>
         </children>
