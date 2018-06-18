@@ -51,9 +51,6 @@
                   <component id="14bfc" class="javax.swing.JList" binding="similarRequests">
                     <constraints/>
                     <properties>
-                      <maximumSize width="-1" height="-1"/>
-                      <minimumSize width="-1" height="-1"/>
-                      <preferredSize width="-1" height="-1"/>
                       <requestFocusEnabled value="false"/>
                       <selectionMode value="0"/>
                     </properties>
@@ -176,7 +173,7 @@
             </constraints>
             <properties>
               <font style="2"/>
-              <foreground color="-16777046"/>
+              <foreground color="-12163926"/>
               <text value="Release v0.0.0."/>
             </properties>
           </component>
@@ -186,7 +183,7 @@
             </constraints>
             <properties>
               <font/>
-              <foreground color="-16777046"/>
+              <foreground color="-12163926"/>
               <text value="View Documentation."/>
             </properties>
           </component>
@@ -196,13 +193,13 @@
             </constraints>
             <properties>
               <font/>
-              <foreground color="-16777046"/>
+              <foreground color="-12163926"/>
               <text value="Report Bug."/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="215c0" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="215c0" layout-manager="GridLayoutManager" row-count="1" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="2" left="10" bottom="0" right="10"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -244,6 +241,15 @@
               <actionCommand value="exportSimilar"/>
               <label value="Export Similar URLs"/>
               <text value="Export Similar URLs"/>
+            </properties>
+          </component>
+          <component id="ba513" class="javax.swing.JButton" binding="cleanGraphButton">
+            <constraints>
+              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <actionCommand value="cleanGraph"/>
+              <text value="Clean Graph"/>
             </properties>
           </component>
           <component id="90094" class="javax.swing.JButton" binding="exportUniqueButton">

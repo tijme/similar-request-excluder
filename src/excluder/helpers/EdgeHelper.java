@@ -1,10 +1,8 @@
 package excluder.helpers;
 
-import excluder.ExtensionDebugger;
 import excluder.ExtensionOptions;
 import excluder.data.Edge;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -84,6 +82,7 @@ public class EdgeHelper {
             index ++;
 
             String[] keyValue = part.split("=", 2);
+            String key = keyValue[0];
             String value = keyValue.length == 2 ? keyValue[1] : keyValue[0];
 
             // Exact match
@@ -91,19 +90,19 @@ public class EdgeHelper {
 
             // Number match
             if (value.matches(numberMatch)) {
-                properties.add(new Edge(String.valueOf(index), ExtensionOptions.OPTION_URL_QUERY_NUMBER_MATCH));
+                properties.add(new Edge(key + String.valueOf(index), ExtensionOptions.OPTION_URL_QUERY_NUMBER_MATCH));
                 continue;
             }
 
             // Word match
             if (value.matches(wordMatch)) {
-                properties.add(new Edge(String.valueOf(index), ExtensionOptions.OPTION_URL_QUERY_WORD_MATCH));
+                properties.add(new Edge(key + String.valueOf(index), ExtensionOptions.OPTION_URL_QUERY_WORD_MATCH));
                 continue;
             }
 
             // Slug match
             if (value.matches(slugMatch)) {
-                properties.add(new Edge(String.valueOf(index), ExtensionOptions.OPTION_URL_QUERY_SLUG_MATCH));
+                properties.add(new Edge(key + String.valueOf(index), ExtensionOptions.OPTION_URL_QUERY_SLUG_MATCH));
             }
         }
     }

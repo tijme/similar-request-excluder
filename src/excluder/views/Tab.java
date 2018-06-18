@@ -2,14 +2,23 @@ package excluder.views;
 
 import excluder.ExtensionDebugger;
 import excluder.ExtensionDetails;
+import excluder.adapters.NodesAdapter;
+import excluder.sets.OrderedHashSet;
 import excluder.views.custom.ScrollableSidebar;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URI;
+import java.util.stream.Collectors;
 
 public class Tab extends MouseAdapter implements ActionListener, MouseListener {
+
+    private TabListener listener;
+
+    private boolean busyCleaningGraph = false;
 
     private JPanel tab;
     private JLabel title;
@@ -23,18 +32,27 @@ public class Tab extends MouseAdapter implements ActionListener, MouseListener {
     private JScrollPane requestsScrollPane;
     private JPanel optionsWrapper;
 
-    private DefaultListModel<String> similarRequestsModel = new DefaultListModel<>();
     private JList similarRequests;
 
     private JButton exportSimilarButton;
     private JButton exportUniqueButton;
+    private JButton cleanGraphButton;
 
     private JLabel amountResponsesScanned;
     private JLabel amountUniqueResponsesFound;
     private JLabel amountSimilarResponsesFound;
     private JLabel amountAdditionalMilliseconds;
 
-    public Tab() {
+    public interface TabListener {
+        OrderedHashSet getUniqueRequests();
+        OrderedHashSet getSimilarRequests();
+        NodesAdapter getNodesAdapter();
+        void cleanGraph();
+    }
+
+    public Tab(TabListener listener) {
+        this.listener = listener;
+
         this.title.setText(ExtensionDetails.TITLE);
 
         this.versionLabel.setText("Release v" + ExtensionDetails.VERSION + ".");
@@ -52,16 +70,13 @@ public class Tab extends MouseAdapter implements ActionListener, MouseListener {
 
         this.exportSimilarButton.addActionListener(this);
         this.exportUniqueButton.addActionListener(this);
+        this.cleanGraphButton.addActionListener(this);
 
-        this.similarRequests.setModel(this.similarRequestsModel);
+        this.similarRequests.setModel(listener.getNodesAdapter());
     }
 
     public JPanel getPanel() {
         return this.tab;
-    }
-
-    public DefaultListModel<String> getSimilarRequestsModel() {
-        return this.similarRequestsModel;
     }
 
     public JPanel getOptionsWrapper() {
@@ -86,12 +101,9 @@ public class Tab extends MouseAdapter implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "exportSimilar":
-
-                break;
-            case "exportUnique":
-
-                break;
+            case "exportSimilar": exportSimilar(); break;
+            case "exportUnique": exportUnique(); break;
+            case "cleanGraph": cleanGraph(); break;
         }
     }
 
@@ -120,6 +132,68 @@ public class Tab extends MouseAdapter implements ActionListener, MouseListener {
                 }
             }
         }
+    }
+
+    private void exportSimilar() {
+        JFileChooser chooser = new JFileChooser();
+        int returnValue = chooser.showSaveDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            try (FileWriter fw = new FileWriter(chooser.getSelectedFile())) {
+                String result = (String) this.listener.getSimilarRequests()
+                        .stream()
+                        .map(i -> i.toString())
+                        .collect(Collectors.joining("\n"));
+
+                fw.write(result);
+            } catch (Exception e) {
+                ExtensionDebugger.error(e);
+            }
+        }
+    }
+
+    private void exportUnique() {
+        JFileChooser chooser = new JFileChooser();
+        int returnValue = chooser.showSaveDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            try (FileWriter fw = new FileWriter(chooser.getSelectedFile())) {
+                String result = (String) this.listener.getUniqueRequests()
+                        .stream()
+                        .map(i -> i.toString())
+                        .collect(Collectors.joining("\n"));
+
+                fw.write(result);
+            } catch (Exception e) {
+                ExtensionDebugger.error(e);
+            }
+        }
+    }
+
+    private void cleanGraph() {
+        if (this.busyCleaningGraph) {
+            return;
+        }
+
+        this.busyCleaningGraph = true;
+
+        int dialogResult = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to discard the current knowledge base?",
+                "Warning",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            this.listener.cleanGraph();
+
+            setAmountResponsesScanned(0);
+            setAmountUniqueResponsesFound(0);
+            setAmountSimilarResponsesFound(0);
+            setAmountAdditionalMilliseconds(0);
+        }
+
+        this.busyCleaningGraph = false;
     }
 
 }

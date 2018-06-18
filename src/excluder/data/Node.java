@@ -64,6 +64,11 @@ public class Node {
         return this.hashCode() == obj.hashCode();
     }
 
+    @Override
+    public String toString() {
+        return getUrl().toString();
+    }
+
     public void setElements(HashSet<String> elements) {
         this.elements = elements;
     }

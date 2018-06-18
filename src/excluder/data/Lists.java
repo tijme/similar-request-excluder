@@ -1,18 +1,17 @@
 package excluder.data;
 
-import excluder.ExtensionDebugger;
+import excluder.sets.OrderedHashSet;
 import excluder.views.Tab;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Lists {
 
-    private HashSet<Node> uniqueRequests = new HashSet<>();
+    private OrderedHashSet uniqueRequests = new OrderedHashSet();
 
-    private HashSet<Node> similarRequests = new HashSet<>();
+    private OrderedHashSet similarRequests = new OrderedHashSet();
 
-    private HashSet<Node> newSimilarRequests = new HashSet<>();
+    private OrderedHashSet newSimilarRequests = new OrderedHashSet();
 
     public void addUnique(Tab tab, Node node) {
         uniqueRequests.add(node);
@@ -29,18 +28,24 @@ public class Lists {
         tab.setAmountResponsesScanned(similarRequests.size() + uniqueRequests.size());
     }
 
-    public HashSet<Node> getUniqueRequests() {
+    public OrderedHashSet getUniqueRequests() {
         return this.uniqueRequests;
     }
 
-    public HashSet<Node> getSimilarRequests() {
+    public OrderedHashSet getSimilarRequests() {
         return this.similarRequests;
     }
 
     public ArrayList<Node> getNewSimilarRequests() {
         ArrayList<Node> result = new ArrayList<>(newSimilarRequests);
-        newSimilarRequests = new HashSet<>();
+        newSimilarRequests = new OrderedHashSet();
         return result;
+    }
+
+    public void clean() {
+        this.uniqueRequests.clear();
+        this.similarRequests.clear();
+        this.newSimilarRequests.clear();
     }
 
 }

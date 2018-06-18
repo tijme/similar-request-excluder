@@ -86,4 +86,9 @@ public class Graph {
         return similarityPoints;
     }
 
+    public void clean() {
+        edgesWithNodes.clear();
+        results.clear();
+    }
+
 }

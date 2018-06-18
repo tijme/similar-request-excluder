@@ -40,7 +40,7 @@ public class ExtensionOptions {
         this.add(OPTION_STATUS, new CheckBoxRow("Status", "Tick to enable.", true));
         this.add(OPTION_DEBUG, new CheckBoxRow("Debug", "Tick to enable.", false));
         this.add(OPTION_MINIMUM_SIMILAR_REQUESTS, new SliderRow("Minimum similar requests", "The minimum amount of similar requests to scan (to prevent false positives).", 10, 1, 100));
-        this.add(OPTION_SIMILARITY_POINTS_REQUIRED, new SliderRow("Similarity points required", "The minimum amount of points to mark the request as similar.", 215, 1, 300));
+        this.add(OPTION_SIMILARITY_POINTS_REQUIRED, new SliderRow("Similarity points required", "The minimum amount of points to mark the request as similar.", 205, 1, 300));
 
         this.addSeparator();
 
