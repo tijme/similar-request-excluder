@@ -37,7 +37,7 @@ class ExtensionDetails:
 
     """
 
-    TITLE = "GraphWave"
+    TITLE = "Similar Request Excluder"
 
     VERSION = "Unknown"
 
