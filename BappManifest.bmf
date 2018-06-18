@@ -8,4 +8,4 @@ MinPlatformVersion: 0
 ProOnly: False
 Author: Tijme Gommers
 ShortDescription: Improves efficiency by automatically marking similar requests as 'out-of-scope'.
-EntryPoint: out/artifacts/similar_request_excluder_jar/similar-request-excluder.jar
+EntryPoint: out/similar-request-excluder.jar
