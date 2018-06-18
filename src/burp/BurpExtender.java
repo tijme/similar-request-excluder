@@ -55,7 +55,7 @@ public class BurpExtender implements IBurpExtender, ITab, IExtensionStateListene
     }
 
     @Override
-    public void registerExtenderCallbacks(final IBurpExtenderCallbacks callbacks) {
+    public void registerExtenderCallbacks(IBurpExtenderCallbacks callbacks) {
         ExtensionDetails.initialize();
         ExtensionDebugger.initialize(callbacks);
 

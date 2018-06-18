@@ -1,6 +1,6 @@
 package excluder.sets;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import excluder.ExtensionDebugger;
 
 import java.util.*;
 
@@ -32,7 +32,7 @@ public class OrderedHashSet implements Collection, Cloneable {
         objects.clear();
         objectsHash.clear();
 
-        if (listener != null) {
+        if (listener != null && size - 1 >= 0) {
             listener.indexRemoved(0, size - 1);
         }
     }
@@ -59,8 +59,7 @@ public class OrderedHashSet implements Collection, Cloneable {
 
     public boolean remove(Object o) {
         if (objectsHash.remove(o)) {
-            int index = objects.indexOf(o);
-            objects.remove(index);
+            objects.remove(o);
             return true;
         }
 
@@ -68,7 +67,9 @@ public class OrderedHashSet implements Collection, Cloneable {
     }
 
     public boolean addAll(Collection c) {
-        throw new NotImplementedException();
+        ExtensionDebugger.error("OrderedHashSet.addAll() is not implemented.");
+        return false;
+
 //        boolean mod = false;
 //
 //        for (Iterator iter = c.iterator(); iter.hasNext(); ) {
@@ -83,7 +84,8 @@ public class OrderedHashSet implements Collection, Cloneable {
     }
 
     public boolean containsAll(Collection c) {
-        throw new NotImplementedException();
+        ExtensionDebugger.error("OrderedHashSet.containsAll() is not implemented.");
+        return false;
 
 //        for (Iterator iter = c.iterator(); iter.hasNext(); ) {
 //            if (!this.contains(iter.next())) {
@@ -95,7 +97,8 @@ public class OrderedHashSet implements Collection, Cloneable {
     }
 
     public boolean removeAll(Collection c) {
-        throw new NotImplementedException();
+        ExtensionDebugger.error("OrderedHashSet.removeAll() is not implemented.");
+        return false;
 
 //        boolean mod = false;
 //
@@ -107,7 +110,8 @@ public class OrderedHashSet implements Collection, Cloneable {
     }
 
     public boolean retainAll(Collection c) {
-        throw new NotImplementedException();
+        ExtensionDebugger.error("OrderedHashSet.retainAll() is not implemented.");
+        return false;
 
 //        boolean mod = false;
 //

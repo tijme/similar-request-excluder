@@ -2,6 +2,7 @@ package excluder.helpers;
 
 import burp.BurpExtender;
 
+import javax.swing.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
@@ -24,6 +25,10 @@ public class FileHelper {
         }
 
         return stringBuilder.toString();
+    }
+
+    public static ImageIcon getIcon(String name) {
+        return new ImageIcon(BurpExtender.class.getResource("/icons/" + name + ".png"));
     }
 
 }

@@ -9,5 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="json-20180130" level="project" />
+    <orderEntry type="library" name="burp-extender-api-1.7.22" level="project" />
   </component>
 </module>

@@ -1,5 +1,6 @@
 package excluder.data;
 
+import excluder.ExtensionDebugger;
 import excluder.sets.OrderedHashSet;
 import excluder.views.Tab;
 

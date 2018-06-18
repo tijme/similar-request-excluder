@@ -12,8 +12,8 @@ public class ExtensionDebugger {
     private static PrintWriter output;
 
     public static void initialize(IBurpExtenderCallbacks callbacks) {
-        ExtensionDebugger.output = new PrintWriter(callbacks.getStdout(),true);
-        ExtensionDebugger.error = new PrintWriter(callbacks.getStderr(),true);
+        ExtensionDebugger.output = new PrintWriter(callbacks.getStdout(), true);
+        ExtensionDebugger.error = new PrintWriter(callbacks.getStderr(), true);
     }
 
     public static void error(String message) {

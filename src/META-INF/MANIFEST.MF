@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: burp-extender-api-1.7.22.jar json-20180130.jar
+

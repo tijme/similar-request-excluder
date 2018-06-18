@@ -1,6 +1,5 @@
 package excluder.data;
 
-import excluder.ExtensionDebugger;
 import excluder.ExtensionOptions;
 
 import java.util.ArrayList;
@@ -77,7 +76,6 @@ public class Graph {
             stylometrySimilarityCount ++;
             stylometrySimilarityValue += similarity;
         }
-
 
         if (stylometrySimilarityCount >= options.getSliderValue(ExtensionOptions.OPTION_MINIMUM_SIMILAR_REQUESTS)) {
             similarityPoints += stylometrySimilarityValue / stylometrySimilarityCount;

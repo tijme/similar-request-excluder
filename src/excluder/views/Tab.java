@@ -3,6 +3,7 @@ package excluder.views;
 import excluder.ExtensionDebugger;
 import excluder.ExtensionDetails;
 import excluder.adapters.NodesAdapter;
+import excluder.helpers.FileHelper;
 import excluder.sets.OrderedHashSet;
 import excluder.views.custom.ScrollableSidebar;
 
@@ -10,15 +11,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.net.URI;
 import java.util.stream.Collectors;
 
 public class Tab extends MouseAdapter implements ActionListener, MouseListener {
 
     private TabListener listener;
-
-    private boolean busyCleaningGraph = false;
 
     private JPanel tab;
     private JLabel title;
@@ -84,18 +82,18 @@ public class Tab extends MouseAdapter implements ActionListener, MouseListener {
     }
 
     public void setAmountResponsesScanned(int newValue) {
-        amountResponsesScanned.setText("<html><b>" + newValue + "</b> responses scanned.</html>");
+        this.amountResponsesScanned.setText("<html><b>" + newValue + "</b> responses scanned.</html>");
     }
     public void setAmountUniqueResponsesFound(int newValue) {
-        amountUniqueResponsesFound.setText("<html><b>" + newValue + "</b> unique responses found.</html>");
+        this.amountUniqueResponsesFound.setText("<html><b>" + newValue + "</b> unique responses found.</html>");
     }
 
     public void setAmountSimilarResponsesFound(int newValue) {
-        amountSimilarResponsesFound.setText("<html><b>" + newValue + "</b> similar responses found.</html>");
+        this.amountSimilarResponsesFound.setText("<html><b>" + newValue + "</b> similar responses found.</html>");
     }
 
     public void setAmountAdditionalMilliseconds(long newValue) {
-        amountAdditionalMilliseconds.setText("<html><b>~" + newValue + "</b> additional milliseconds per request.</html>");
+        this.amountAdditionalMilliseconds.setText("<html><b>~" + newValue + "</b> additional milliseconds per request.</html>");
     }
 
     @Override
@@ -171,12 +169,6 @@ public class Tab extends MouseAdapter implements ActionListener, MouseListener {
     }
 
     private void cleanGraph() {
-        if (this.busyCleaningGraph) {
-            return;
-        }
-
-        this.busyCleaningGraph = true;
-
         int dialogResult = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to discard the current knowledge base?",
@@ -192,8 +184,6 @@ public class Tab extends MouseAdapter implements ActionListener, MouseListener {
             setAmountSimilarResponsesFound(0);
             setAmountAdditionalMilliseconds(0);
         }
-
-        this.busyCleaningGraph = false;
     }
 
 }

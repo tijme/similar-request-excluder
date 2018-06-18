@@ -98,11 +98,7 @@ public class HttpListener implements IHttpListener, ChangeListener {
             return false;
         }
 
-        if (toolFlag != IBurpExtenderCallbacks.TOOL_PROXY && toolFlag != IBurpExtenderCallbacks.TOOL_SPIDER) {
-            return false;
-        }
-
-        return true;
+        return toolFlag == IBurpExtenderCallbacks.TOOL_PROXY || toolFlag == IBurpExtenderCallbacks.TOOL_SPIDER;
     }
 
     private boolean shouldCertainlyMarkMessageAsUnique(IRequestInfo request, IResponseInfo response, String html) {
@@ -114,10 +110,7 @@ public class HttpListener implements IHttpListener, ChangeListener {
             return true;
         }
 
-        if (!SimilarityBlacklist.shouldProcess(html)) {
-            return true;
-        }
+        return !SimilarityBlacklist.shouldProcess(html);
 
-        return false;
     }
 }
