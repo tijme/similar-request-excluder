@@ -3,11 +3,11 @@
     <img src="https://cdn.rawgit.com/tijme/graphwave/develop/.github/similar-request-excluder-logo.svg?cache=1" />
     <br/>
     <a href="https://github.com/tijme/similar-request-excluder/blob/develop/LICENSE.md"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=MIT" /></a>
-    <a href="https://github.com/tijme/similar-request-excluder/releases"><img src="https://raw.finnwea.com/shield/?typeKey=SemverVersion&typeValue1=similar-request-excluder&typeValue2=develop&typeValue4=Stable&cache=5"></a>
+    <a href="https://github.com/tijme/similar-request-excluder/releases"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=1.1.0"></a>
     <br/>
-    <b>Detecting similar CFG-paths from HTTP responses in a black box manner</b>
+    <b>A Burp Suite extension that automatically marks similar requests as 'out-of-scope'.</b>
     <br/>
-    <sub>An extension that enables you to automatically reduce the target scope of your active scan by excluding similar (and therefore redundant) requests.</sub>
+    <sub>It automatically reduces the target scope of your active scan by excluding similar (and therefore redundant) requests.</sub>
     <br/>
     <sub>Built with ❤ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
     <br/>
@@ -29,13 +29,13 @@ Please refer to the [wiki](https://github.com/tijme/similar-request-excluder/wik
 
 **Preview:** [latest build](https://github.com/tijme/similar-request-excluder/blob/develop/.github/thesis-graphwave-tijme-gommers.pdf)
 
-Please note that the thesis has been anonymised and some private information has been redacted. The source of the thesis (LaTex) is not open-source at the moment
+Please note that the thesis has been anonymised and some private information has been redacted. The source of the thesis (LaTex) is not open-source at the moment. The thesis focuses on release v1.0.0 of the extension; however, many changes have been made in the meantime.
 
 # Presentation
 
 **Preview:** [latest build](https://github.com/tijme/similar-request-excluder/blob/develop/.github/presentation-graphwave-tijme-gommers.pdf)
 
-Please note that the presentation has been anonymised and some private information has been redacted. The source of the presentation (LaTex) is not open-source at the moment
+Please note that the presentation has been anonymised and some private information has been redacted. The source of the presentation (LaTex) is not open-source at the moment. The presentation focuses on release v1.0.0 of the extension; however, many changes have been made in the meantime.
 
 # Issues
 
