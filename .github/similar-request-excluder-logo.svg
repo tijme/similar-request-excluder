@@ -1,5 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 350 100" xmlns="http://www.w3.org/2000/svg">
-<path d="M-1-1h352v102H-1z" fill="#fff"/>
-<text transform="matrix(24.715 0 0 19.555 -8041 -3423)" x="325" y="186" font-family="Helvetica, Arial, sans-serif" font-size="24" stroke="#000" stroke-width="0">~</text>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="300" height="100"><path fill="#fff" d="M-1-1h295V99H-1z"/><g stroke="#000" stroke-width="0"><text x="6" y="27" font-family="'Lucida Sans Unicode', 'Lucida Grande', sans-serif" font-size="24">Similar Request Excluder</text><text x="77" y="154" font-family="Helvetica, Arial, sans-serif" font-size="250">~</text></g></svg>
