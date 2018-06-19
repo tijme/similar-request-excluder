@@ -27,7 +27,7 @@ You can install Similar Request Excluder using the BAppStore! Please check the [
 
 # Thesis
 
-**Preview:** [latest build](https://github.com/tijme/similar-request-excluder/blob/develop/.github/thesis-graphwave-tijme-gommers.pdf)
+**Preview:** [final version](https://raw.finnwea.com/similar-request-excluder/)
 
 Please note that the thesis has been anonymised and some private information has been redacted. The source of the thesis (LaTex) is not open-source at the moment. The thesis focuses on release v1.0.0 of the extension; however, many changes have been made in the meantime.
 
