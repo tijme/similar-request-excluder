@@ -15,15 +15,15 @@
 </p>
 
 **Table of Contents:**
-* [Documentation](#documentation)
+* [Installation](#installation)
 * [Thesis](#thesis)
 * [Presentation](#presentation)
 * [Issues](#issues)
 * [License](#license)
 
-# Documentation
+# Installation
 
-Please refer to the [wiki](https://github.com/tijme/similar-request-excluder/wiki) for installation and usage instructions. Our [F.A.Q](https://github.com/tijme/similar-request-excluder/wiki/F.A.Q) helps to troubleshoot any problems that might occur.
+You can install Similar Request Excluder using the BAppStore! Please check the [installation instructions](https://github.com/tijme/similar-request-excluder/wiki/Installation) on the wiki. The [F.A.Q](https://github.com/tijme/similar-request-excluder/wiki/F.A.Q) helps to troubleshoot any problems that might occur.
 
 # Thesis
 
