@@ -80,7 +80,7 @@
                 <properties>
                   <horizontalScrollBarPolicy value="31"/>
                   <opaque value="false"/>
-                  <verticalScrollBarPolicy value="22"/>
+                  <verticalScrollBarPolicy value="20"/>
                 </properties>
                 <border type="empty"/>
                 <children>

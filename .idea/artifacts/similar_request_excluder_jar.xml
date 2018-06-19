@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact build-on-make="true" name="similar-request-excluder:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/similar_request_excluder_jar</output-path>
+    <output-path>$PROJECT_DIR$/out</output-path>
     <root id="root">
       <element id="archive" name="similar-request-excluder.jar">
         <element id="module-output" name="similar-request-excluder" />
