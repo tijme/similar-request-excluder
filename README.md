@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://cdn.rawgit.com/tijme/similar-request-excluder/6a4a6635/.github/similar-request-excluder-logo.svg" width="475" />
+    <img src="https://cdn.rawgit.com/tijme/similar-request-excluder/d62e3d9a/.github/similar-request-excluder-logo.svg" width="475" />
     <br/>
     <a href="https://github.com/tijme/similar-request-excluder/blob/develop/LICENSE.md"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=MIT" /></a>
     <a href="https://github.com/tijme/similar-request-excluder/releases"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=1.1.0"></a>
