@@ -1,45 +1,46 @@
-<h1 align="center">GraphWave</h1>
 <p align="center">
-    <a href="https://github.com/tijme/graphwave/blob/master/LICENSE.md"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=MIT" /></a>
-    <a href="https://github.com/tijme/graphwave/releases"><img src="https://raw.finnwea.com/shield/?typeKey=SemverVersion&typeValue1=graphwave&typeValue2=master&typeValue4=Stable&cache=5"></a>
+    <img src="https://cdn.rawgit.com/tijme/similar-request-excluder/d62e3d9a/.github/similar-request-excluder-logo.svg" width="475" />
     <br/>
-    <b>Detecting similar CFG-paths from HTTP responses in a black box manner</b>
+    <a href="https://github.com/tijme/similar-request-excluder/blob/develop/LICENSE.md"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=MIT" /></a>
+    <a href="https://github.com/tijme/similar-request-excluder/releases"><img src="https://raw.finnwea.com/shield/?firstText=License&secondText=1.1.0"></a>
     <br/>
-    <sub>This Burp Suite extension detects similar code flows (CFG-paths) in requests and enables you to ignore them in active scans.</sub>
+    <b>A Burp Suite extension that automatically marks similar requests as 'out-of-scope'.</b>
     <br/>
-    <sub>Built with ❤︎ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
+    <a href="#installation">Installation</a>
+    •
+    <a href="#thesis">Thesis</a>
+    •
+    <a href="#presentation">Presentation</a>
+    •
+    <a href="#issues">Issues</a>
+    •
+    <a href="#license">License</a>
+    <br/>
+    <sub>Built with ❤ by <a href="https://twitter.com/finnwea">Tijme Gommers</a> – Donate via <a href="https://www.paypal.me/tijmegommers/5">PayPal</a></sub>
+    <br/>
 </p>
-<p align="center">
-    <img src="https://github.com/tijme/graphwave/raw/master/.github/preview.png?cache=1" />
-</p>
+<hr>
 
-**Table of Contents:**
-* [Documentation](#documentation)
-* [Thesis](#thesis)
-* [Presentation](#presentation)
-* [Issues](#issues)
-* [License](#license)
+## Installation
 
-# Documentation
+You can install Similar Request Excluder using the BAppStore! Please check the [installation instructions](https://github.com/tijme/similar-request-excluder/wiki/Installation) on the wiki. The [F.A.Q](https://github.com/tijme/similar-request-excluder/wiki/F.A.Q) helps to troubleshoot any problems that might occur.
 
-Please refer to the [wiki](https://github.com/tijme/graphwave/wiki) for installation and usage instructions. Our [F.A.Q](https://github.com/tijme/graphwave/wiki/F.A.Q) helps to troubleshoot any problems that might occur.
+## Thesis
 
-# Thesis
+**Preview:** [final version](https://raw.finnwea.com/similar-request-excluder/)
 
-**Preview:** [latest build](https://github.com/tijme/graphwave/blob/master/.github/thesis-graphwave-tijme-gommers.pdf)
+Please note that the thesis has been anonymised and some private information has been redacted. The source of the thesis (LaTex) is not open-source at the moment. The thesis focuses on release v1.0.0 of the extension; however, many changes have been made in the meantime.
 
-Please note that the thesis has been anonymised and some private information has been redacted. The source of the thesis (LaTex) is not open-source at the moment
+## Presentation
 
-# Presentation
+**Preview:** [latest build](https://github.com/tijme/similar-request-excluder/blob/develop/.github/presentation-graphwave-tijme-gommers.pdf)
 
-**Preview:** [latest build](https://github.com/tijme/graphwave/blob/master/.github/presentation-graphwave-tijme-gommers.pdf)
+Please note that the presentation has been anonymised and some private information has been redacted. The source of the presentation (LaTex) is not open-source at the moment. The presentation focuses on release v1.0.0 of the extension; however, many changes have been made in the meantime.
 
-Please note that the presentation has been anonymised and some private information has been redacted. The source of the presentation (LaTex) is not open-source at the moment
+## Issues
 
-# Issues
+Issues or new features can be reported via the [GitHub issue tracker](https://github.com/tijme/similar-request-excluder/issues). Please make sure your issue or feature has not yet been reported by anyone else before submitting a new one.
 
-Issues or new features can be reported via the [GitHub issue tracker](https://github.com/tijme/graphwave/issues). Please make sure your issue or feature has not yet been reported by anyone else before submitting a new one.
+## License
 
-# License
-
-GraphWave is open-sourced software licensed under the [MIT license](https://github.com/tijme/graphwave/blob/master/LICENSE.md).
+Similar Request Excluder is open-sourced software licensed under the [MIT license](https://github.com/tijme/similar-request-excluder/blob/develop/LICENSE.md).

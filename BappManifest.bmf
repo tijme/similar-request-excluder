@@ -1,0 +1,11 @@
+Uuid: 9ecd51851baf4ae6b69c6a951257387a
+ExtensionType: 1
+Name: Similar Request Excluder
+RepoName: similar-request-excluder
+ScreenVersion: 1.1.0
+SerialVersion: 2
+MinPlatformVersion: 0
+ProOnly: False
+Author: Tijme Gommers
+ShortDescription: Improves efficiency by automatically marking similar requests as 'out-of-scope'.
+EntryPoint: out/similar-request-excluder.jar
