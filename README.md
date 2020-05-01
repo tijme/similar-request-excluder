@@ -1,3 +1,5 @@
+<p align="center">:warning: Similar Request Excluder is only compatible with BurpSuite v1 :warning:</p>
+<br>
 <p align="center">
     <img src="https://cdn.rawgit.com/tijme/similar-request-excluder/d62e3d9a/.github/similar-request-excluder-logo.svg" width="475" />
     <br/>
